@@ -2,6 +2,8 @@
 #include "ImageParams.h"
 
 #include "Filter.h"
+#include "Brightness.h"
+
 
 
 int main()
