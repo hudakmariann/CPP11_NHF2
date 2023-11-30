@@ -8,7 +8,7 @@ class Filter
 {
 
 private:
-virtual bool ApplyFilter(int &rate)const = 0; //"Az NVI név arra utal, hogy egy jól megtervezett osztály interfészén (publikus részén) nem kellene virtuális függvények legyenek, hanem csak a privát részen. "
+virtual bool ApplyFilter(int rate)const = 0; //"Az NVI név arra utal, hogy egy jól megtervezett osztály interfészén (publikus részén) nem kellene virtuális függvények legyenek, hanem csak a privát részen. "
 
 protected:
     std::unique_ptr<ImageParams> imgParams;

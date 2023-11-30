@@ -28,6 +28,7 @@ public:
             this->green = rhs.green;
             this->blue = rhs.blue;
         }
+        return *this;
     }
 
         //move constructor - ha jól értem, hiába nincs most itt heap (mert egy short olyan rövid, hogy egy pointer sem rövidebb),
@@ -48,6 +49,7 @@ public:
                 this->green = rhs.green;
                 this->blue = rhs.blue;
             }
+            return *this;
 
         }
 

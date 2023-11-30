@@ -14,19 +14,26 @@ private:
     unsigned const Depth;
 
 
-    std::vector<std::vector <PixelData>> RGBMatrix;//(n, std::vector<PixelData> (m, 4));
+    std::vector<std::vector <PixelData>> RGBMatrix;
     std::vector< std::vector < HSVData> > HSVMatrix;
 
 
-
-friend class Filter;
+//protected:
+//friend class Filter;
 
 public:
     ImageParams(unsigned const H, unsigned W, unsigned D) : Height{H}, Width{W}, Depth{D} {}
 
+
+
+    //getterek, hogy a Filter osztály hozzáférjen
+    //azért nem friend lett a Filter osztály, mert akkor a leszármazottai nem tudnák lekérdezni az adatokat, csak az explicite friend ősosztály
+    //minden leszármazottat meg nem lenne szerencsés Frienddé tenni, mert mi van, ha később vki csinál újabb szűrőket
     unsigned getHeight() const {return Height;}
     unsigned getWidth() const {return Width;}
     unsigned getDepth() const {return Depth;}
+    std::vector<std::vector <PixelData>> getRGBMatrix(){return RGBMatrix;}
+    std::vector< std::vector < HSVData> > getHSVMatrix(){return HSVMatrix;}
 
     void setRGBMatrix(std::vector< std::vector < PixelData> >&& rgbmatrix){ this->RGBMatrix = rgbmatrix; }
     void setHSVMatrix(std::vector< std::vector < HSVData> >&& hsvmatrix){ this->HSVMatrix = hsvmatrix; }

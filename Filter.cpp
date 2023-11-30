@@ -3,27 +3,25 @@
 
 bool Filter::RGBtoHSV(){
 
+bool result = false;
+
 double min, max, diff;
-   // HSVData** HSVmatrix;
+
     double r, g, b;
 
-    /* foglalás */
-    //debugmalloc_max_block_size(imgdata->w * imgdata->h * sizeof(HSV)); //ha ezt nem allitom be, a debugmalloc sir mar egy 512*512-es keptol is
-    unsigned const h = imgParams->Height;
-    unsigned const w = imgParams->Width;
-    //HSVmatrix = new HSVData[h][w];//(HSV**) malloc(imgdata->h * sizeof(HSV*));
-    //HSVmatrix[0] = (HSV*) malloc(imgdata->w * imgdata->h * sizeof(HSV));
+
+    unsigned const h = imgParams->getHeight();
+    unsigned const w = imgParams->getWidth();
 
     std::vector<std::vector<HSVData>> HSVmatrix(h, std::vector<HSVData> (w));
-
 
 
     for (int i = 0; i < h; i++){
         for (int j = 0; j < w; j++){
 
-            r = (double)imgParams->RGBMatrix[i][j].red/256;
-            g = (double)imgParams->RGBMatrix[i][j].green/256;
-            b = (double)imgParams->RGBMatrix[i][j].blue/256;
+            r = (double)imgParams->getRGBMatrix()[i][j].red/256;
+            g = (double)imgParams->getRGBMatrix()[i][j].green/256;
+            b = (double)imgParams->getRGBMatrix()[i][j].blue/256;
 
             max = Max<double>(r,g,b);
             min = Min<double>(r,g,b);
@@ -55,8 +53,8 @@ double min, max, diff;
     }//end for i
    // return HSVmatrix;
    imgParams->setHSVMatrix(std::move(HSVmatrix));
-
-   return true;
+result = true;
+   return result;
 
 
 
@@ -67,18 +65,27 @@ double min, max, diff;
 
 
 bool Filter::HSVtoRGB(){
-    //double max, min;
+    bool result = false;
     double h, s, v;
     double r, g, b;
 
-    for (unsigned i = 0; i < imgParams->getHeight(); i++){
-        for (unsigned j = 0; j < imgParams->getWidth(); j++){
+    unsigned const  height = imgParams->getHeight();
+    unsigned const  width = imgParams->getWidth();
+
+
+
+    std::vector<std::vector<PixelData>> RGBmatrix(height, std::vector<PixelData> (width));
+
+
+
+    for (unsigned i = 0; i < height; i++){
+        for (unsigned j = 0; j < width; j++){
 
     // RGB-HSV konverziohoz hasznalt forras: https://lodev.org/cgtutor/color.html
 
-            h = imgParams->HSVMatrix[i][j].hue;
-            s = imgParams->HSVMatrix[i][j].saturation;
-            v = imgParams->HSVMatrix[i][j].value;
+            h = imgParams->getHSVMatrix()[i][j].hue;
+            s = imgParams->getHSVMatrix()[i][j].saturation;
+            v = imgParams->getHSVMatrix()[i][j].value;
 
             if(s == 0)
                 r = g = b = v;
@@ -141,15 +148,16 @@ bool Filter::HSVtoRGB(){
             if (b>1)  b = 1;
 
 
-            imgParams->RGBMatrix[i][j].red = (short)(r * 255);
-            imgParams->RGBMatrix[i][j].green = (short)(g * 255);
-            imgParams->RGBMatrix[i][j].blue = (short)(b * 255);
+            RGBmatrix[i][j].red = (short)(r * 255);
+            RGBmatrix[i][j].green = (short)(g * 255);
+            RGBmatrix[i][j].blue = (short)(b * 255);
 
 
             }//end for j
         }//end for i
-//printf("***********************************RGBtoHSV***************************\n");
-return true;
+        imgParams->setRGBMatrix(std::move(RGBmatrix));
+result = true;
+return result;
 }
 
 

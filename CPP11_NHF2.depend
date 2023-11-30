@@ -1,28 +1,32 @@
 # depslib dependency file v1.0
-1701298838 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/main.cpp
+1701333262 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/main.cpp
 	<iostream>
 	"ImageParams.h"
 	"Filter.h"
 	"Brightness.h"
 
-1701295207 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/ImageParams.h
+1701337678 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/ImageParams.h
 	<vector>
 	"PixelData.h"
 	"HSVData.h"
 
-1701286040 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/PixelData.h
+1701337509 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/PixelData.h
 
-1701287149 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/HSVData.h
+1701337549 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/HSVData.h
 
-1701297287 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Filter.cpp
+1701339756 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Filter.cpp
 	<vector>
 	"Filter.h"
 
-1701300522 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Filter.h
+1701337315 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Filter.h
 	"ImageParams.h"
 	<memory>
 
-1701300166 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Brightness.h
+1701334382 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Brightness.h
 	"Filter.h"
 	<memory>
+
+1701340108 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Brightness.cpp
+	<iostream>
+	"Brightness.h"
 

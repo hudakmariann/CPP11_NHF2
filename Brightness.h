@@ -4,11 +4,12 @@
 #include <memory>
 
 
-class Brightness : public Filter {
+class Brightness final: public Filter {
 
 public:
 
 Brightness(std::unique_ptr<ImageParams> imgprms) : Filter {std::move(imgprms)} {}
+virtual bool ApplyFilter(int rate)const override;
 
 
 

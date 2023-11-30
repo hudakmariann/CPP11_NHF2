@@ -29,6 +29,7 @@ public:
             this->saturation = rhs.saturation;
             this->value = rhs.value;
         }
+        return *this;
     }
 
     //destruktor (memoriat nem kell felszabaditani, mert shortok miatt nem erdemes pointerezni, de a rule of 3 miatt def.
