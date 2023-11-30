@@ -9,9 +9,9 @@
 class ImageParams{
 
 private:
-    unsigned const Height;
-    unsigned const Width;
-    unsigned const Depth;
+    unsigned  Height;
+    unsigned  Width;
+    unsigned  Depth;
 
 
     std::vector<std::vector <PixelData>> RGBMatrix;
@@ -35,6 +35,9 @@ public:
     std::vector<std::vector <PixelData>> getRGBMatrix(){return RGBMatrix;}
     std::vector< std::vector < HSVData> > getHSVMatrix(){return HSVMatrix;}
 
+    void setHeight(unsigned h){ this->Height = h; }
+    void setWidth(unsigned w){ this->Width = w; }
+    void setDepth(unsigned d){ this->Depth = d; }
     void setRGBMatrix(std::vector< std::vector < PixelData> >&& rgbmatrix){ this->RGBMatrix = rgbmatrix; }
     void setHSVMatrix(std::vector< std::vector < HSVData> >&& hsvmatrix){ this->HSVMatrix = hsvmatrix; }
 

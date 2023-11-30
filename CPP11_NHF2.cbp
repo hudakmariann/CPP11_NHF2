@@ -32,12 +32,22 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Brightness.cpp" />
+		<Unit filename="Brightness.h" />
 		<Unit filename="Filter.cpp" />
 		<Unit filename="Filter.h" />
 		<Unit filename="HSVData.h" />
 		<Unit filename="ImageParams.h" />
 		<Unit filename="PixelData.h" />
+		<Unit filename="control.cpp" />
+		<Unit filename="control.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="menu.cpp" />
+		<Unit filename="menu.h" />
+		<Unit filename="readimage.cpp" />
+		<Unit filename="readimage.h" />
+		<Unit filename="writeimage.cpp" />
+		<Unit filename="writeimage.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
