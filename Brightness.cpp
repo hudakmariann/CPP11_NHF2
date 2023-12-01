@@ -2,7 +2,7 @@
 
 #include "Brightness.h"
 
-bool Brightness::ApplyFilter(int rate) {
+std::unique_ptr<ImageParams> Brightness::ApplyFilter(int rate) {
 
 bool result = false;
 bool HSVReady = false;
@@ -56,6 +56,6 @@ bool RGBReady = false;
     RGBReady = Filter::HSVtoRGB();
     result = HSVReady;
     std::cout <<  "Brightness ready." << std::endl;
-return result;
+return (std::move(imgParams));
 
 }

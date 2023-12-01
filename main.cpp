@@ -58,12 +58,12 @@ int main(){
         }
 
         while(!finished){
-            outputImg = processimage(std::move(imgParams));
+            outputImg = std::move(processimage(std::move(imgParams)));
             if (outputImg == NULL){
                     printf("ERROR: Image processing failed.\n");
                 return 2;
             }
-            finished = saveimage(std::move(imgParams), filename);
+            finished = saveimage(std::move(outputImg), filename);
         }
 
         //free(matrix[0]);

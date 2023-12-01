@@ -9,7 +9,7 @@ class Brightness final: public Filter {
 public:
 
 Brightness(std::unique_ptr<ImageParams> imgprms) : Filter {std::move(imgprms)} {}
-virtual bool ApplyFilter(int rate) override;
+virtual std::unique_ptr<ImageParams> ApplyFilter(int rate) override;
 
 
 

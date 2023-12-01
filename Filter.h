@@ -8,7 +8,7 @@ class Filter
 {
 
 private:
-virtual bool ApplyFilter(int rate) = 0; //"Az NVI név arra utal, hogy egy jól megtervezett osztály interfészén (publikus részén) nem kellene virtuális függvények legyenek, hanem csak a privát részen. "
+virtual std::unique_ptr<ImageParams> ApplyFilter(int rate) = 0; //"Az NVI név arra utal, hogy egy jól megtervezett osztály interfészén (publikus részén) nem kellene virtuális függvények legyenek, hanem csak a privát részen. "
 
 protected:
     std::unique_ptr<ImageParams> imgParams;
@@ -20,8 +20,8 @@ protected:
     T Min (T a, T b, T c)
     {
         T abc[3] = {a, b, c};
-        T min = abc[0];
-        for (int i = 1; i < 3; i++){
+        T min = 255.0;
+        for (int i = 0; i < 3; i++){
             if (abc[i] < abc[i-1])
                 min = abc[i];
         }
@@ -32,8 +32,8 @@ protected:
     T Max (T a, T b, T c)
     {
         T abc[3] = {a, b, c};
-        T max = abc[0];
-        for (int i = 1; i < 3; i++){
+        T max = 0.0;
+        for (int i = 0; i < 3; i++){
             if (abc[i] > abc[i-1])
                 max = abc[i];
         }

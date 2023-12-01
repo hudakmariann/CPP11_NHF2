@@ -32,22 +32,27 @@ int writefile(std::string filenamestr,std::unique_ptr<ImageParams> imgParams){//
 
     unsigned height = imgParams->getHeight();
     unsigned width = imgParams->getWidth();
+    std::vector<std::vector<PixelData>> RGBMatrix =   imgParams->getRGBMatrix();
+
 for (int i = 0; i < height; i++){
         for (int j = 0; j < width; j++){
             for (int k = 0; k<3; k++){
                  switch (k%3) {
                      case 0: {
-                        v = (unsigned char)imgParams->getRGBMatrix()[i][j].red ;
+                        //v = (unsigned char)imgParams->getRGBMatrix()[i][j].red ;
+                        v = (unsigned char)RGBMatrix[i][j].red ;
                         fwrite(&v,  sizeof(unsigned char), 1, outputfile) ;
                         break;
                      }
                      case 1: {
-                        v = (unsigned char)imgParams->getRGBMatrix()[i][j].green ;
+                        //v = (unsigned char)imgParams->getRGBMatrix()[i][j].green ;
+                         v = (unsigned char)RGBMatrix[i][j].green ;
                         fwrite(&v,  sizeof(unsigned char), 1, outputfile) ;
                         break;
                      }
                      case 2: {
-                        v = (unsigned char)imgParams->getRGBMatrix()[i][j].blue ;
+                        //v = (unsigned char)imgParams->getRGBMatrix()[i][j].blue ;
+                         v = (unsigned char)RGBMatrix[i][j].blue;
                         fwrite(&v,  sizeof(unsigned char), 1, outputfile) ;
                         break;
                      }

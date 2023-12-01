@@ -72,6 +72,7 @@ std::unique_ptr<ImageParams> processimage(std::unique_ptr<ImageParams> imgParams
 
     unsigned height = imgParams->getHeight();
     unsigned width = imgParams->getWidth();
+    std::unique_ptr<ImageParams> outputParams;
     std::vector<std::vector<HSVData>> HSVmatrix;
 
     displaymain();
@@ -112,7 +113,7 @@ std::unique_ptr<ImageParams> processimage(std::unique_ptr<ImageParams> imgParams
             Brightness brightness(std::move(imgParams));
             std::cout << "Please provide the rate of brightness modification between -100 and 100\n";
             std::cin >> rate;
-            brightness.ApplyFilter(rate);
+            outputParams = std::move(brightness.ApplyFilter(rate));
 
             break;
         }
@@ -150,7 +151,7 @@ std::unique_ptr<ImageParams> processimage(std::unique_ptr<ImageParams> imgParams
 
     }//end switch
 
-    return 0;
+    return (std::move (outputParams));
 }
 
 

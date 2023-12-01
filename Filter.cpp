@@ -61,8 +61,10 @@ double min, max, diff;
 
             //std::cout  << "RGBtoHSV : r = " <<  r << std::endl;;
 
-            max = maxRGB(r,g,b); //Max<double>(r,g,b);
-            min = minRGB(r,g,b); //Min<double>(r,g,b);
+            max = maxRGB(r,g,b);
+            min = minRGB(r,g,b);
+            //max = Max<double>(r,g,b);
+            //min = Min<double>(r,g,b);
             diff = max - min;
 
             //std::cout  << "RGBtoHSV : diff = " <<  diff << std::endl;;
