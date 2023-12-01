@@ -35,17 +35,29 @@ double min, max, diff;
     unsigned const h = imgParams->getHeight();
     unsigned const w = imgParams->getWidth();
 
-     std::cout  << "RGBtoHSV : RGBmatrix.size = " <<  imgParams->getRGBMatrix().size() << std::endl;;
+     std::cout  << "RGBtoHSV : RGBmatrix.size = " <<  imgParams->getRGBMatrix().size() << std::endl;
+
 
     std::vector<std::vector<HSVData>> HSVmatrix(h, std::vector<HSVData> (w));
+
+
+    //az eredeti elkepzeles az volt, hogy az osszes image parametert a heapen tarolom, es move semantics-szal adom at egyik szurobol a masikba
+    //viszont igy, hogy a unique pointeren keresztul erem el a heapen a pixel adatokat iteralas kozben, vallalhatatlanul lassu
+    //emiatt kell egy lokalis masolat ide a stackre
+    std::vector<std::vector<PixelData>> RGBMatrix =   imgParams->getRGBMatrix();
 
 
     for (int i = 0; i < h; i++){
         for (int j = 0; j < w; j++){
 
-            r = (double)imgParams->getRGBMatrix()[i][j].red/256;
-            g = (double)imgParams->getRGBMatrix()[i][j].green/256;
-            b = (double)imgParams->getRGBMatrix()[i][j].blue/256;
+           // r = (double)imgParams->getRGBMatrix()[i][j].red/256;
+            //g = (double)imgParams->getRGBMatrix()[i][j].green/256;
+            //b = (double)imgParams->getRGBMatrix()[i][j].blue/256;
+
+
+            r = (double)RGBMatrix[i][j].red/256;
+            g = (double)RGBMatrix[i][j].green/256;
+            b = (double)RGBMatrix[i][j].blue/256;
 
             //std::cout  << "RGBtoHSV : r = " <<  r << std::endl;;
 
@@ -77,10 +89,10 @@ double min, max, diff;
                 HSVmatrix[i][j].hue=0;
             HSVmatrix[i][j].hue /= 6;
             HSVmatrix[i][j].value = max;
-            //std::cout  << "HSVmatrix[i][j].value = " << HSVmatrix[i][j].value << std::endl;;
+           // std::cout  << HSVmatrix[i][j].value << "  ";
 
         }//end for j
-        std::cout  << "HSVmatrix[i][j].value = " << i << std::endl;;
+        //std::cout  << "HSVmatrix[ line = " << i << std::endl;;
     }//end for i
    // return HSVmatrix;
 
@@ -107,7 +119,9 @@ bool Filter::HSVtoRGB(){
 
 
 
-    std::vector<std::vector<PixelData>> RGBmatrix(height, std::vector<PixelData> (width));
+     std::vector<std::vector<PixelData>> RGBmatrix(height, std::vector<PixelData> (width));
+     std::vector<std::vector<HSVData>> HSVMatrix = imgParams->getHSVMatrix();
+
 
 
 
@@ -116,23 +130,30 @@ bool Filter::HSVtoRGB(){
 
     // RGB-HSV konverziohoz hasznalt forras: https://lodev.org/cgtutor/color.html
 
-            h = imgParams->getHSVMatrix()[i][j].hue;
-            s = imgParams->getHSVMatrix()[i][j].saturation;
-            v = imgParams->getHSVMatrix()[i][j].value;
+            //h = imgParams->getHSVMatrix()[i][j].hue;
+            //s = imgParams->getHSVMatrix()[i][j].saturation;
+            //v = imgParams->getHSVMatrix()[i][j].value;
+
+            h = HSVMatrix[i][j].hue;
+            s = HSVMatrix[i][j].saturation;
+            v = HSVMatrix[i][j].value;
+
+            //std::cout  << h << "  ";
 
             if(s == 0)
                 r = g = b = v;
             else
             {
-                float f, p, q, t;
+                float f, p, q, t, m;
                 int n;
                 h *= 6;
-                i = (int)h;//(floor(h));
+                n = (int)h;//(floor(h));
+                //m = (float)n;
                 f = h - n;
                 p = v * (1 - s);
                 q = v * (1 - (s * f));
                 t = v * (1 - (s * (1 - f)));
-                switch(i)
+                switch(n)
                 {
                     case 0:{
                         r = v;
@@ -185,10 +206,14 @@ bool Filter::HSVtoRGB(){
             RGBmatrix[i][j].green = (short)(g * 255);
             RGBmatrix[i][j].blue = (short)(b * 255);
 
+            std::cout  << RGBmatrix[i][j].red << "  ";
+
 
             }//end for j
+            std::cout << std::endl;
         }//end for i
         imgParams->setRGBMatrix(std::move(RGBmatrix));
+        std::cout <<"RGB Ready. \n";
 result = true;
 return result;
 }

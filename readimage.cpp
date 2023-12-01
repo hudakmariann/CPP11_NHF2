@@ -11,7 +11,7 @@
 
 std::unique_ptr<ImageParams>  readfile(std::string filenamestr, short* errorcode){ //}, ImageParams *imgdata){
 
-    std::unique_ptr<ImageParams> imgParams (new ImageParams(0, 0, 0));
+    std::unique_ptr<ImageParams> imgParams = std::unique_ptr<ImageParams>{new ImageParams(0, 0, 0)};
 
     FILE *inputfile;
     char c;
