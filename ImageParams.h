@@ -22,7 +22,7 @@ private:
 //friend class Filter;
 
 public:
-    ImageParams(unsigned const H, unsigned W, unsigned D) : Height{H}, Width{W}, Depth{D} {}
+    ImageParams(unsigned  H, unsigned W, unsigned D) : Height{H}, Width{W}, Depth{D} {}
 
 
 

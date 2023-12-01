@@ -1,5 +1,27 @@
 #include <vector>
+#include <iostream>
 #include "Filter.h"
+
+
+double minRGB(double r, double g, double b){
+    double rgb[3] = {r,g,b};
+    double min = 255;
+    for (int i = 0; i<3; ++i){
+        if (rgb[i] < min)
+            min = rgb[i];
+    }
+    return min;
+}
+
+double maxRGB(double r, double g, double b){
+    double rgb[3] = {r,g,b};
+    double max = 0;
+    for (int i = 0; i<3; ++i){
+        if (rgb[i] > max)
+            max = rgb[i];
+    }
+    return max;
+}
 
 bool Filter::RGBtoHSV(){
 
@@ -13,6 +35,8 @@ double min, max, diff;
     unsigned const h = imgParams->getHeight();
     unsigned const w = imgParams->getWidth();
 
+     std::cout  << "RGBtoHSV : RGBmatrix.size = " <<  imgParams->getRGBMatrix().size() << std::endl;;
+
     std::vector<std::vector<HSVData>> HSVmatrix(h, std::vector<HSVData> (w));
 
 
@@ -23,9 +47,13 @@ double min, max, diff;
             g = (double)imgParams->getRGBMatrix()[i][j].green/256;
             b = (double)imgParams->getRGBMatrix()[i][j].blue/256;
 
-            max = Max<double>(r,g,b);
-            min = Min<double>(r,g,b);
+            //std::cout  << "RGBtoHSV : r = " <<  r << std::endl;;
+
+            max = maxRGB(r,g,b); //Max<double>(r,g,b);
+            min = minRGB(r,g,b); //Min<double>(r,g,b);
             diff = max - min;
+
+            //std::cout  << "RGBtoHSV : diff = " <<  diff << std::endl;;
 
             if (max == 0)
                 HSVmatrix[i][j].saturation = 0;
@@ -49,9 +77,14 @@ double min, max, diff;
                 HSVmatrix[i][j].hue=0;
             HSVmatrix[i][j].hue /= 6;
             HSVmatrix[i][j].value = max;
+            //std::cout  << "HSVmatrix[i][j].value = " << HSVmatrix[i][j].value << std::endl;;
+
         }//end for j
+        std::cout  << "HSVmatrix[i][j].value = " << i << std::endl;;
     }//end for i
    // return HSVmatrix;
+
+   std::cout  << "RGBtoHSV ready. " << std::endl;;
    imgParams->setHSVMatrix(std::move(HSVmatrix));
 result = true;
    return result;

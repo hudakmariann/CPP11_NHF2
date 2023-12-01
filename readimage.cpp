@@ -1,5 +1,5 @@
 
-
+#include <iostream>
 #include "readimage.h"
 //#include "debugmalloc.h"
 
@@ -11,7 +11,7 @@
 
 std::unique_ptr<ImageParams>  readfile(std::string filenamestr, short* errorcode){ //}, ImageParams *imgdata){
 
-std::unique_ptr<ImageParams> imgParams;
+    std::unique_ptr<ImageParams> imgParams (new ImageParams(0, 0, 0));
 
     FILE *inputfile;
     char c;
@@ -49,13 +49,17 @@ std::unique_ptr<ImageParams> imgParams;
     fread(&c, sizeof(char), 1, inputfile);
     //printf("c = %c",c);
     if (c == '#'){
+    printf("Reading comment\n");
         while (c != '\n')
             fread(&c, sizeof(char), 1, inputfile);
     }
 
 // kep meretenek beolvasasa
+if (isdigit(c))
      size[0] = c; //ha nem volt komment, a kep  merete mar itt kezodik, ezert be kell irni a size tombbe. Ha volt, akkor a \n kerul a size tomb elejere, de azt a sscanf ugysem fogja szamkent beolvasni, ugyhogy nem baj.
+     else size[0] = ' ';
      fread(&c, sizeof(char), 1, inputfile);
+      printf("Reading Image size\n");
      if (isdigit(c)){
         size[1] = c;
         int i = 2;
@@ -65,12 +69,19 @@ std::unique_ptr<ImageParams> imgParams;
             size[i] = c;
             i++;
         }
+         //printf("Size = %s", size);
+         std::cout << "Size = " << size << "pixels" << std::endl;
     unsigned width, height;
-    sscanf(size, "%d %d", width, height);
+    sscanf(size, "%u %u", &width, &height);
+     printf("Setting width, height\n");
+     std::cout << "width = " << width << " height =  " << height<< std::endl;
     imgParams->setWidth(width);
     imgParams->setHeight(height);
+     printf("Setting width, height ready\n");
+
 
     printf("width = %d, height = %d\n", imgParams->getWidth(), imgParams->getHeight());
+    std::cout << "width = " << imgParams->getWidth() << " height =  " << imgParams->getHeight() << std::endl;
     }
     else{
         printf("Error: file contains invalid resolution data\n");
@@ -88,8 +99,11 @@ std::unique_ptr<ImageParams> imgParams;
             depth[j] = c;
             j++;
         }
+         std::cout << "Depth char = " << depth << " in chars" << std::endl;
         unsigned d;
-        sscanf(depth, "%d", d);
+        sscanf(depth, "%u", &d);
+         std::cout << "Depth unsigned = " << d << " pixels" << std::endl;
+
         imgParams->setDepth(d);
         printf("bitdepth = %d\n", imgParams->getDepth());
     }
@@ -112,7 +126,9 @@ std::unique_ptr<ImageParams> imgParams;
 
     unsigned height = imgParams->getHeight();
     unsigned width = imgParams->getWidth();
-    std::vector< std::vector < PixelData>> matrix;
+    //std::vector< std::vector < PixelData>> matrix;
+    //std::vector< std::vector < PixelData>> matrix;
+    std::vector<std::vector<PixelData>> matrix(height, std::vector<PixelData> (width));
     for (int i = 0; i < height; i++){
         for (int j = 0; j < width; j++){
             for (int k = 0; k<3; k++){

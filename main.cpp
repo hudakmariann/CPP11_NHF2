@@ -37,8 +37,8 @@ int main(){
     std::unique_ptr<ImageParams> imgParams = NULL;
     bool imgRead =false;
     std::unique_ptr<ImageParams> outputImg = NULL;
-    std::string filename = NULL;
-     bool onemore = false;
+    std::string filename;
+    bool onemore = false;
     char yesno;
     int processcompleted = 1;
     short errorcode;
@@ -46,7 +46,7 @@ int main(){
 
     do{
         bool finished = false;
-        filenev_beker(filename);
+        filename = filenev_beker();
 
         imgParams = readfile(filename, &errorcode);
         if (imgParams != NULL)

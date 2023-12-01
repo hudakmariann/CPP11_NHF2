@@ -9,22 +9,25 @@
 #include "writeimage.h"
 #include "control.h"
 
-void filenev_beker(std::string filename){
+std::string filenev_beker(){
 
 
-
+    std::string filename = "*.ppm";
     std::string extension = ".ppm";
     size_t ppm;
 
     do{
 
     printf("Please type in the filename of the image!\n");
-    scanf(" %s", filename);
-    printf("FILENAME = %s\n", filename);
+    std::cin >> filename;
+    //scanf(" %s", filename);
+    //printf("FILENAME = %s\n", filename);
+    std::cout << filename << std::endl;
     ppm = filename.find(extension);
     if (ppm == std::string::npos)
         printf("The file extension is not *.ppm!\n");
     }while (ppm == std::string::npos);
+    return filename;
 }
 
 
@@ -43,7 +46,7 @@ bool saveimage(std::unique_ptr<ImageParams> outputImg, std::string filename){//}
             return false;
         }
         case 1: {
-            filenev_beker(filename);
+            std::string filename = filenev_beker();
             writefile(filename, std::move(outputImg));
             break;;
         }
@@ -53,7 +56,8 @@ bool saveimage(std::unique_ptr<ImageParams> outputImg, std::string filename){//}
             if ((yesno == 'y') || (yesno == 'Y'))
                writefile(filename, std::move(outputImg));
             else{
-                filenev_beker(filename);
+             std::string filename = filenev_beker();
+                filename = filenev_beker();
                 writefile(filename, std::move(outputImg));
             }
             break;

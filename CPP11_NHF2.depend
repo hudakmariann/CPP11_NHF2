@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1701385101 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/main.cpp
+1701418326 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/main.cpp
 	"ImageParams.h"
 	"Filter.h"
 	"Brightness.h"
@@ -16,7 +16,7 @@
 	"control.h"
 	"ImageParams.h"
 
-1701375053 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/ImageParams.h
+1701432140 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/ImageParams.h
 	<vector>
 	"PixelData.h"
 	"HSVData.h"
@@ -29,15 +29,15 @@
 	<vector>
 	"Filter.h"
 
-1701337315 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Filter.h
+1701432217 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Filter.h
 	"ImageParams.h"
 	<memory>
 
-1701334382 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Brightness.h
+1701432271 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Brightness.h
 	"Filter.h"
 	<memory>
 
-1701340108 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Brightness.cpp
+1701432855 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Brightness.cpp
 	<iostream>
 	"Brightness.h"
 
@@ -53,7 +53,7 @@
 
 1701375469 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/writeimage.h
 
-1701385159 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/control.h
+1701418279 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/control.h
 	<stdbool.h>
 	<string>
 	<iostream>
@@ -66,7 +66,8 @@
 	"readimage.h"
 	"writeimage.h"
 
-1701380489 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/readimage.cpp
+1701425901 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/readimage.cpp
+	<iostream>
 	"readimage.h"
 
 1701381874 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/writeimage.cpp
@@ -75,7 +76,7 @@
 	"readimage.h"
 	"writeimage.h"
 
-1701384632 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/control.cpp
+1701426415 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/control.cpp
 	"menu.h"
 	"readimage.h"
 	"ImageParams.h"

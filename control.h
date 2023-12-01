@@ -9,7 +9,7 @@
 #include <memory>
 
 
-void filenev_beker(std::string filename);
+std::string filenev_beker();
 bool saveimage(std::unique_ptr<ImageParams> outputImg, std::string filename);//ImageParams *imgdata, PixelData **matrix, char *filename);
 std::unique_ptr<ImageParams>  processimage(std::unique_ptr<ImageParams> imgParams);//ImageParams *imgdata, PixelData **matrix, char* filename);
 
