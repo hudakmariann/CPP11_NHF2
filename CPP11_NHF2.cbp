@@ -34,11 +34,15 @@
 		</Compiler>
 		<Unit filename="Brightness.cpp" />
 		<Unit filename="Brightness.h" />
+		<Unit filename="Contrast.cpp" />
+		<Unit filename="Contrast.h" />
 		<Unit filename="Filter.cpp" />
 		<Unit filename="Filter.h" />
 		<Unit filename="HSVData.h" />
 		<Unit filename="ImageParams.h" />
 		<Unit filename="PixelData.h" />
+		<Unit filename="Saturation.cpp" />
+		<Unit filename="Saturation.h" />
 		<Unit filename="control.cpp" />
 		<Unit filename="control.h" />
 		<Unit filename="main.cpp" />

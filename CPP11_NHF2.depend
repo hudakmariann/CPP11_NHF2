@@ -25,7 +25,7 @@
 
 1701337549 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/HSVData.h
 
-1701470750 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Filter.cpp
+1701471370 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Filter.cpp
 	<vector>
 	<iostream>
 	"Filter.h"
@@ -77,7 +77,7 @@
 	"readimage.h"
 	"writeimage.h"
 
-1701469808 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/control.cpp
+1701547521 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/control.cpp
 	"menu.h"
 	"readimage.h"
 	"ImageParams.h"
@@ -85,6 +85,33 @@
 	"HSVData.h"
 	"Filter.h"
 	"Brightness.h"
+	"Saturation.h"
+	"Contrast.h"
+	"FindEdges.h"
 	"writeimage.h"
 	"control.h"
+
+1701472969 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Saturation.cpp
+	<iostream>
+	"Saturation.h"
+
+1701472177 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Saturation.h
+	"Filter.h"
+	<memory>
+
+1701531526 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Contrast.cpp
+	<iostream>
+	"Contrast.h"
+
+1701531180 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Contrast.h
+	"Filter.h"
+	<memory>
+
+1701546507 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/FindEdges.cpp
+	<iostream>
+	"FindEdges.h"
+
+1701546329 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/FindEdges.h
+	"Filter.h"
+	<memory>
 

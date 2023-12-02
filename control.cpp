@@ -5,6 +5,9 @@
 #include "HSVData.h"
 #include "Filter.h"
 #include "Brightness.h"
+#include "Saturation.h"
+#include "Contrast.h"
+#include "FindEdges.h"
 
 #include "writeimage.h"
 #include "control.h"
@@ -94,7 +97,13 @@ std::unique_ptr<ImageParams> processimage(std::unique_ptr<ImageParams> imgParams
             HSVtoRGB(imgdata, HSVmatrix, matrix);
             free(HSVmatrix[0]);
             free(HSVmatrix);*/
+            int rate;
             std::cout << "Contrast was chosen.\n";
+            Contrast contrast(std::move(imgParams));
+            std::cout << "Please provide the rate of contrast modification between -100 and 100\n";
+            std::cin >> rate;
+            outputParams = std::move(contrast.ApplyFilter(rate));
+
             break;
         }
         case 2: {
@@ -128,6 +137,11 @@ std::unique_ptr<ImageParams> processimage(std::unique_ptr<ImageParams> imgParams
             free(HSVmatrix[0]);
             free(HSVmatrix);*/
              std::cout << "Saturation was chosen.\n";
+             int rate;
+            Saturation saturation(std::move(imgParams));
+            std::cout << "Please provide the rate of saturation modification between -100 and 100\n";
+            std::cin >> rate;
+            outputParams = std::move(saturation.ApplyFilter(rate));
             break;
         }
         case 4: {
@@ -145,7 +159,13 @@ std::unique_ptr<ImageParams> processimage(std::unique_ptr<ImageParams> imgParams
             HSVtoRGB(imgdata, HSVmatrix, matrix);
             free(HSVmatrix[0]);
             free(HSVmatrix);*/
-             std::cout << "FindEdges was chosen.\n";
+
+            int rate = 100;
+            std::cout << "FindEdges was chosen.\n";
+            FindEdges findedges(std::move(imgParams));
+
+            outputParams = std::move(findedges.ApplyFilter(rate));
+
             break;
         }
 
