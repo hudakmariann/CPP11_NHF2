@@ -77,7 +77,7 @@
 	"readimage.h"
 	"writeimage.h"
 
-1701547521 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/control.cpp
+1701552166 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/control.cpp
 	"menu.h"
 	"readimage.h"
 	"ImageParams.h"
@@ -88,6 +88,7 @@
 	"Saturation.h"
 	"Contrast.h"
 	"FindEdges.h"
+	"Blur.h"
 	"writeimage.h"
 	"control.h"
 
@@ -107,11 +108,15 @@
 	"Filter.h"
 	<memory>
 
-1701546507 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/FindEdges.cpp
+1701547688 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/FindEdges.cpp
 	<iostream>
 	"FindEdges.h"
 
 1701546329 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/FindEdges.h
+	"Filter.h"
+	<memory>
+
+1701548368 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Blur.h
 	"Filter.h"
 	<memory>
 

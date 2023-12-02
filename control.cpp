@@ -8,6 +8,7 @@
 #include "Saturation.h"
 #include "Contrast.h"
 #include "FindEdges.h"
+#include "Blur.h"
 
 #include "writeimage.h"
 #include "control.h"
@@ -147,6 +148,11 @@ std::unique_ptr<ImageParams> processimage(std::unique_ptr<ImageParams> imgParams
         case 4: {
             //blurimage(imgdata, matrix);
              std::cout << "Blur was chosen.\n";
+             int filtersize;
+            Blur blur(std::move(imgParams));
+            std::cout << "Please provide the size of blur filter between 0 and 30 pixels\n";
+            std::cin >> filtersize;
+            outputParams = std::move(blur.ApplyFilter(filtersize));
             break;
         }
         case 5: {
@@ -163,7 +169,6 @@ std::unique_ptr<ImageParams> processimage(std::unique_ptr<ImageParams> imgParams
             int rate = 100;
             std::cout << "FindEdges was chosen.\n";
             FindEdges findedges(std::move(imgParams));
-
             outputParams = std::move(findedges.ApplyFilter(rate));
 
             break;
