@@ -10,7 +10,7 @@
 
 
 std::string filenev_beker();
-bool saveimage(std::unique_ptr<ImageParams> outputImg, std::string filename);//ImageParams *imgdata, PixelData **matrix, char *filename);
+bool saveimage(std::unique_ptr<ImageParams> outputImg, std::string filename, enum SubMenu suboption);//ImageParams *imgdata, PixelData **matrix, char *filename);
 std::unique_ptr<ImageParams>  processimage(std::unique_ptr<ImageParams> imgParams);//ImageParams *imgdata, PixelData **matrix, char* filename);
 
 

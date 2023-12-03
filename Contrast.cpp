@@ -26,7 +26,7 @@ double Contrast::minval(){
     double min = 255.0;
      for (int i = 0; i < h; i++){
         for (int j = 0; j < w; j++){
-        std::cout  << "HSVmatrix i j = " << HSVmatrix[i][j].value<< std::endl;
+
         if (HSVmatrix[i][j].value < min)
              min = HSVmatrix[i][j].value;
         }//end for j
@@ -87,12 +87,11 @@ std::cout  << "HSVmatrix in Contrast created" << std::endl;
      for (unsigned i = 0; i < h; i++){
         for (unsigned j = 0; j < w; j++){
             HSVmatrix[i][j].value = ((HSVmatrix[i][j].value-min)*(((1+percent)*max)/(max-min))+min*(1-percent));
-            std::cout  <<  HSVmatrix[i][j].hue << "  ";
+
         }//end for j
-        std::cout  << std::endl;
+
     }//end for i
-     std::cout  << "HSVmatrix[0][0] = " <<  HSVmatrix[0][0].hue << std::endl;;
-     std::cout  << "HSVmatrix[500][500] = " <<  HSVmatrix[500][500].hue << std::endl;;
+
     imgParams->setHSVMatrix(std::move(HSVmatrix));
 
     RGBReady = Filter::HSVtoRGB();

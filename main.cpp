@@ -57,14 +57,26 @@ int main(){
             return 1;
         }
 
-        while(!finished){
-            outputImg = std::move(processimage(std::move(imgParams)));
-            if (outputImg == NULL){
+        outputImg = std::move(processimage(std::move(imgParams)));
+
+        if (outputImg == NULL){
                     printf("ERROR: Image processing failed.\n");
                 return 2;
             }
-            finished = saveimage(std::move(outputImg), filename);
+        enum SubMenu suboption;
+        displaysubmenu();
+        suboption = selectsubmenu();
+        printf("The selected option is: %d\n", suboption);
+        while(suboption == 0){
+            outputImg = std::move(processimage(std::move(outputImg)));
+            displaysubmenu();
+            suboption = selectsubmenu();
+
         }
+
+        finished = saveimage(std::move(outputImg), filename, suboption);
+
+
 
         //free(matrix[0]);
         //free(matrix);

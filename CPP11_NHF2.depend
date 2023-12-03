@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1701469975 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/main.cpp
+1701560982 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/main.cpp
 	"ImageParams.h"
 	"Filter.h"
 	"Brightness.h"
@@ -25,7 +25,7 @@
 
 1701337549 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/HSVData.h
 
-1701471370 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Filter.cpp
+1701562550 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Filter.cpp
 	<vector>
 	<iostream>
 	"Filter.h"
@@ -54,7 +54,7 @@
 
 1701375469 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/writeimage.h
 
-1701418279 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/control.h
+1701561076 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/control.h
 	<stdbool.h>
 	<string>
 	<iostream>
@@ -77,7 +77,7 @@
 	"readimage.h"
 	"writeimage.h"
 
-1701552166 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/control.cpp
+1701561244 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/control.cpp
 	"menu.h"
 	"readimage.h"
 	"ImageParams.h"
@@ -100,7 +100,7 @@
 	"Filter.h"
 	<memory>
 
-1701531526 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Contrast.cpp
+1701562645 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Contrast.cpp
 	<iostream>
 	"Contrast.h"
 
@@ -119,4 +119,8 @@
 1701548368 /home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Blur.h
 	"Filter.h"
 	<memory>
+
+1701556077 source:/home/hudakmariann/BME/CPP11/NHF2/CPP11_NHF2/Blur.cpp
+	<iostream>
+	"Blur.h"
 

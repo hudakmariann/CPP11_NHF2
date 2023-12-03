@@ -35,20 +35,18 @@ std::string filenev_beker(){
 }
 
 
-bool saveimage(std::unique_ptr<ImageParams> outputImg, std::string filename){//}ImageParams *imgdata, PixelData **matrix, char *filename){
-    enum SubMenu suboption;
+bool saveimage(std::unique_ptr<ImageParams> outputImg, std::string filename, enum SubMenu suboption){//}ImageParams *imgdata, PixelData **matrix, char *filename){
+
     char yesno;
 
-    displaysubmenu();
 
-    suboption = selectsubmenu();
-    printf("The selected option is: %d\n", suboption);
 
     switch(suboption){
-        case 0:{
+        /*case 0:{
             writefile("PROBA.ppm", std::move(outputImg)); //egy biztonsagi mentest a teszt kedveert ebben az esetben is csinalok
             return false;
-        }
+
+        }*/
         case 1: {
             std::string filename = filenev_beker();
             writefile(filename, std::move(outputImg));

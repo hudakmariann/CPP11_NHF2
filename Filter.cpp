@@ -208,11 +208,11 @@ bool Filter::HSVtoRGB(){
             RGBmatrix[i][j].green = (short)(g * 255);
             RGBmatrix[i][j].blue = (short)(b * 255);
 
-            std::cout  << RGBmatrix[i][j].red << "  ";
+
 
 
             }//end for j
-            std::cout << std::endl;
+
         }//end for i
         imgParams->setRGBMatrix(std::move(RGBmatrix));
         std::cout <<"RGB Ready. \n";
