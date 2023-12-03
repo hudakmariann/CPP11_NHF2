@@ -11,6 +11,8 @@ public:
 
     PixelData(short &&r=0, short &&g = 0, short &&b = 0) : red{r}, green{g}, blue{b} {} //itt move semantics, mert odaát a hívónál már nem kell az adat, így jöhet rvalue-ként, és akkor nem másolgat feleslegesen (?)
 
+    //rule of 5
+
     // copy constructor
     PixelData(const PixelData& rhs)
     {

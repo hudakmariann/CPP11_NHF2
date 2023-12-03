@@ -32,12 +32,16 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Blur.cpp" />
+		<Unit filename="Blur.h" />
 		<Unit filename="Brightness.cpp" />
 		<Unit filename="Brightness.h" />
 		<Unit filename="Contrast.cpp" />
 		<Unit filename="Contrast.h" />
 		<Unit filename="Filter.cpp" />
 		<Unit filename="Filter.h" />
+		<Unit filename="FindEdges.cpp" />
+		<Unit filename="FindEdges.h" />
 		<Unit filename="HSVData.h" />
 		<Unit filename="ImageParams.h" />
 		<Unit filename="PixelData.h" />

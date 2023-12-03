@@ -5,25 +5,17 @@
 std::unique_ptr<ImageParams> FindEdges::ApplyFilter(int rate)
 {
 
-bool HSVReady = false;
-bool RGBReady = false;
-
-    std::cout  << "imgParams->HSVmatrix.size = " <<  imgParams->getHSVMatrix().size() << std::endl;
+    bool HSVReady = false;
+    bool RGBReady = false;
 
     if (imgParams->getHSVMatrix().size()==0)
         HSVReady = Filter::RGBtoHSV();
 
-           unsigned h = imgParams->getHeight();
+    unsigned h = imgParams->getHeight();
     unsigned w = imgParams->getWidth();
-
-    std::cout  << "imgParams->HSVmatrix.size = " <<  imgParams->getHSVMatrix().size() << std::endl;
 
     std::vector<std::vector<HSVData>> HSVmatrix = imgParams->getHSVMatrix();
     std::vector<std::vector<HSVData>> filteredHSV(h, std::vector<HSVData> (w));
-
-
-    std::cout  << "HSVmatrix in Contrast created" << std::endl;
-
 
     double surround[8];
     double szele = 1;
@@ -55,7 +47,7 @@ bool RGBReady = false;
                 sum+=surround[i];
             }
             filteredHSV[y][x].hue = HSVmatrix[y][x].hue;
-            filteredHSV[y][x].saturation = 0;//HSVmatrix[y][x].s;
+            filteredHSV[y][x].saturation = 0;
             filteredHSV[y][x].value = (-8)*HSVmatrix[y][x].value + sum;
 
         }//end for x
@@ -67,9 +59,5 @@ bool RGBReady = false;
 
     std::cout <<  "FindEdges ready." << std::endl;
     return (std::move(imgParams));
-
-
-
-
 
 }

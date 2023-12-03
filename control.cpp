@@ -22,14 +22,12 @@ std::string filenev_beker(){
 
     do{
 
-    printf("Please type in the filename of the image!\n");
+    std::cout <<"Please type in the filename of the image!\n";
     std::cin >> filename;
-    //scanf(" %s", filename);
-    //printf("FILENAME = %s\n", filename);
     std::cout << filename << std::endl;
     ppm = filename.find(extension);
     if (ppm == std::string::npos)
-        printf("The file extension is not *.ppm!\n");
+        std::cout <<"The file extension is not *.ppm!\n";
     }while (ppm == std::string::npos);
     return filename;
 }
@@ -38,27 +36,20 @@ std::string filenev_beker(){
 bool saveimage(std::unique_ptr<ImageParams> outputImg, std::string filename, enum SubMenu suboption){//}ImageParams *imgdata, PixelData **matrix, char *filename){
 
     char yesno;
-
-
-
     switch(suboption){
-        /*case 0:{
-            writefile("PROBA.ppm", std::move(outputImg)); //egy biztonsagi mentest a teszt kedveert ebben az esetben is csinalok
-            return false;
 
-        }*/
         case 1: {
             std::string filename = filenev_beker();
             writefile(filename, std::move(outputImg));
             break;;
         }
         case 2: {
-            printf("WARNING: are you sure you want to overwrite %s? (y/n) \n", filename);
+            std::cout<<"WARNING: are you sure you want to overwrite "<< filename << "? (y/n) " << std::endl;
             scanf(" %c", &yesno); //szokoz kell, kulonben atugorja. Az elozo entert karakternek veszi!
             if ((yesno == 'y') || (yesno == 'Y'))
                writefile(filename, std::move(outputImg));
             else{
-             std::string filename = filenev_beker();
+                std::string filename = filenev_beker();
                 filename = filenev_beker();
                 writefile(filename, std::move(outputImg));
             }
@@ -69,7 +60,7 @@ return true;
 }
 
 
-std::unique_ptr<ImageParams> processimage(std::unique_ptr<ImageParams> imgParams){//}ImageParams *imgdata, PixelData **matrix, char* filename){
+std::unique_ptr<ImageParams> processimage(std::unique_ptr<ImageParams> imgParams){
     enum MainMenu option;
 
     unsigned height = imgParams->getHeight();
@@ -79,23 +70,14 @@ std::unique_ptr<ImageParams> processimage(std::unique_ptr<ImageParams> imgParams
 
     displaymain();
     option = selectmain();
-    printf("The selected option is: %d\n", option);
+    std::cout << "The selected option is: " << option << std::endl;
 
     switch(option){
         case 0:{
-
             exit(0);
         }
         case 1: {
-            /*HSVmatrix = RGBtoHSV(imgdata, matrix);
-            if (HSVmatrix == NULL){
-                printf ("Error: HSV conversion failed!\n");
-                return 2;
-            }
-            setcontrast(imgdata, HSVmatrix);
-            HSVtoRGB(imgdata, HSVmatrix, matrix);
-            free(HSVmatrix[0]);
-            free(HSVmatrix);*/
+
             int rate;
             std::cout << "Contrast was chosen.\n";
             Contrast contrast(std::move(imgParams));
@@ -106,16 +88,7 @@ std::unique_ptr<ImageParams> processimage(std::unique_ptr<ImageParams> imgParams
             break;
         }
         case 2: {
-            /*HSVmatrix = RGBtoHSV(imgdata, matrix);
-            if (HSVmatrix == NULL){
-                printf ("Error: HSV conversion failed!\n");
-                return 2;
-            }
-            setbrightness(imgdata, HSVmatrix);
-            HSVtoRGB(imgdata, HSVmatrix, matrix);
-            free(HSVmatrix[0]);
-            free(HSVmatrix);
-            */
+
             int rate;
             std::cout << "Brightness was chosen.\n";
             Brightness brightness(std::move(imgParams));
@@ -126,17 +99,9 @@ std::unique_ptr<ImageParams> processimage(std::unique_ptr<ImageParams> imgParams
             break;
         }
         case 3: {
-            /*HSVmatrix = RGBtoHSV(imgdata, matrix);
-            if (HSVmatrix == NULL){
-                printf ("Error: HSV conversion failed!\n");
-                return 2;
-            }
-            setsaturation(imgdata, HSVmatrix);
-            HSVtoRGB(imgdata, HSVmatrix, matrix);
-            free(HSVmatrix[0]);
-            free(HSVmatrix);*/
-             std::cout << "Saturation was chosen.\n";
-             int rate;
+
+            std::cout << "Saturation was chosen.\n";
+            int rate;
             Saturation saturation(std::move(imgParams));
             std::cout << "Please provide the rate of saturation modification between -100 and 100\n";
             std::cin >> rate;
@@ -144,9 +109,9 @@ std::unique_ptr<ImageParams> processimage(std::unique_ptr<ImageParams> imgParams
             break;
         }
         case 4: {
-            //blurimage(imgdata, matrix);
-             std::cout << "Blur was chosen.\n";
-             int filtersize;
+
+            std::cout << "Blur was chosen.\n";
+            int filtersize;
             Blur blur(std::move(imgParams));
             std::cout << "Please provide the size of blur filter between 0 and 30 pixels\n";
             std::cin >> filtersize;
@@ -154,16 +119,6 @@ std::unique_ptr<ImageParams> processimage(std::unique_ptr<ImageParams> imgParams
             break;
         }
         case 5: {
-            /*HSVmatrix = RGBtoHSV(imgdata, matrix);
-            if (HSVmatrix == NULL){
-                printf ("Error: HSV conversion failed!\n");
-                return 2;
-            }
-            findedges(imgdata, HSVmatrix);
-            HSVtoRGB(imgdata, HSVmatrix, matrix);
-            free(HSVmatrix[0]);
-            free(HSVmatrix);*/
-
             int rate = 100;
             std::cout << "FindEdges was chosen.\n";
             FindEdges findedges(std::move(imgParams));

@@ -1,20 +1,3 @@
-/*#include <iostream>
-#include "ImageParams.h"
-
-#include "Filter.h"
-#include "Brightness.h"
-
-int main()
-{
-
-    std::cout << "Hello bello!" << std::endl;
-    return 0;
-}*/
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-
 #include <string>
 #include <iostream>
 
@@ -31,9 +14,7 @@ int main()
 
 
 int main(){
-    //PixelData **matrix;
     short readfileresult;
-    //ImageParams imgdata;
     std::unique_ptr<ImageParams> imgParams = NULL;
     bool imgRead =false;
     std::unique_ptr<ImageParams> outputImg = NULL;
@@ -43,17 +24,16 @@ int main(){
     int processcompleted = 1;
     short errorcode;
 
-
     do{
         bool finished = false;
         filename = filenev_beker();
 
         imgParams = readfile(filename, &errorcode);
         if (imgParams != NULL)
-            printf("Image loaded successfully\n");
+            std::cout<<"Image loaded successfully\n";
         else{
-            printf("ERROR loading image\n");
-            printf("errorcode = %d\n", readfileresult);
+            std::cout<<"ERROR loading image\n";
+            std::cout<<"errorcode = "<< readfileresult << std::endl;;
             return 1;
         }
 
@@ -76,12 +56,7 @@ int main(){
 
         finished = saveimage(std::move(outputImg), filename, suboption);
 
-
-
-        //free(matrix[0]);
-        //free(matrix);
-
-        printf("Would you like to process another image? (y/n)\n");
+        std::cout<<"Would you like to process another image? (y/n)\n";
         scanf(" %c", &yesno); //szokoz kell, kulonben atugorja. Az elozo entert karakternek veszi!
 
 
@@ -92,6 +67,6 @@ int main(){
 
     }while(onemore);
 
-    printf("end.\n");
+    std::cout<<"end.\n";
     return 0;
 }

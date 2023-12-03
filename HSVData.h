@@ -11,6 +11,7 @@ public:
 
     HSVData(double &&h=0, double &&s=0, double &&v=0) : hue{h}, saturation{s}, value{v} {}
 
+    //rule of 5
 
     // copy constructor
     HSVData(const HSVData& rhs)
